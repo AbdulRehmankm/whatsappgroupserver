@@ -13,6 +13,7 @@ const app = express();
 // Allowed origins
 const allowedOrigins = [
   'https://snapmoviehd.com',
+  'https://www.snapmoviehd.com',
   'http://localhost:3000'
 ];
 
