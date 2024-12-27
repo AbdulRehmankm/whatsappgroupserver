@@ -109,6 +109,10 @@ export const addItem = async (req, res) => {
       type: req.body.type,
       language: req.body.language.split(',').map(lang => lang.trim()), // Assuming languages are sent as a comma-separated string
       availableFormats: req.body.availableFormats.split(',').map(format => format.trim()), // Assuming formats are sent as a comma-separated string
+      link480p: req.body.link480p,
+      link720p: req.body.link720p,
+      link1080p: req.body.link1080p,
+      link4k: req.body.link4k,
       category: categoryDoc._id, // Use the ObjectId of the found category
       description: req.body.description,
       image1: imageUrls[0], // Store first image URL
@@ -160,6 +164,10 @@ export const updateItem = async (req, res) => {
       availableFormats: req.body.availableFormats
         ? req.body.availableFormats.split(',').map(format => format.trim())
         : existingItem.availableFormats,
+      link480p: req.body.link480p || existingItem.link480,
+      link720p: req.body.link720p || existingItem.link720,
+      link1080p: req.body.link1080p || existingItem.link1080,
+      link4k: req.body.link4k || existingItem.link4k,
       category: categoryDoc._id || existingItem.category,
       description: req.body.description || existingItem.description,
       // Update image URLs only if new images were uploaded, otherwise retain existing ones
