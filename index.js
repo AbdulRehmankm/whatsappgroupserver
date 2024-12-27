@@ -5,10 +5,27 @@ import dotenv from 'dotenv';
 import adminRoutes from './routes/admin.routes.js';
 import itemRoutes from './routes/item.routes.js';
 import orderRoutes from './routes/order.routes.js';
+import axios from "axios";
 
 dotenv.config();
 
 const app = express();
+
+const url = `https://snapmovieserver.onrender.com`;
+const interval = 30000;
+
+function reloadWebsite() {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log("website reloded");
+    })
+    .catch((error) => {
+      console.error(`Error : ${error.message}`);
+    });
+}
+
+setInterval(reloadWebsite, interval);
 
 // Allowed origins
 const allowedOrigins = [
