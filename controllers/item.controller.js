@@ -81,18 +81,18 @@ export const getItemsBySearch = async (req, res) => {
 
 export const addItem = async (req, res) => {
   try {
-    // Find the category by name
-    const categoryDoc = await Category.findOne({ name: req.body.category });
-    if (!categoryDoc) {
-      return res.status(400).json({ message: 'Category not found' });
-    }
+    // // Find the category by name
+    // const categoryDoc = await Category.findOne({ name: req.body.category });
+    // if (!categoryDoc) {
+    //   return res.status(400).json({ message: 'Category not found' });
+    // }
     // Handle image uploads
     const imageUrls = await uploadMultipleToCloudinary(req.files.map(file => file.path));
 
     const newItem = new Item({
       name: req.body.name,
       linkname: req.body.lname,
-      category: categoryDoc._id, // Use the ObjectId of the found category
+      // category: categoryDoc._id, // Use the ObjectId of the found category
       image1: imageUrls[0], // Store first image URL
     });
 
