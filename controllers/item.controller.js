@@ -87,13 +87,13 @@ export const addItem = async (req, res) => {
     //   return res.status(400).json({ message: 'Category not found' });
     // }
     // Handle image uploads
-    const imageUrls = await uploadMultipleToCloudinary(req.files.map(file => file.path));
+    // const imageUrls = await uploadMultipleToCloudinary(req.files.map(file => file.path));
 
     const newItem = new Item({
       name: req.body.name,
       linkname: req.body.lname,
       // category: categoryDoc._id, // Use the ObjectId of the found category
-      image1: imageUrls[0], // Store first image URL
+      // image1: imageUrls[0], // Store first image URL
     });
 
     await newItem.save();
