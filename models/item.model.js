@@ -17,7 +17,7 @@ const itemSchema = new mongoose.Schema({
     },
     popularity: { type: Number, default: 0 },
     isAdmin: { type: Boolean, default: false },
-    category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
+   
     status: { type: String, enum: ['Pending', 'Approved', 'Canceled'], default: 'Pending' },
      image1: { type: String }, // URL for image 1
 }, { timestamps: true });
